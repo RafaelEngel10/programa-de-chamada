@@ -10,22 +10,24 @@ typedef struct node {
 
 list valueSet(list called) {
     list aux = called;
+    list head = called;
 
-    while (aux != null) {
-        cout << "Informe o nome: ";
+    while (true) {
+        cout << "Informe o nome (ou 0 para terminar): ";
         cin >> aux->value;
-        if (aux->value != "0")
-            aux->next = new node;
-        else 
-            aux->next = null;
 
-        if (aux->value == "0" || aux->value == "0-" || aux->value == "-0") 
+        if (aux->value == "0" || aux->value == "0-" || aux->value == "-0") {
             aux->value = "Fim da lista de nomes!\0";
-        
+            aux->next = NULL;
+            break;
+        }
+
+        aux->next = new node;
         aux = aux->next;
     }
-    cout << "Nomes colocados com sucesso!" << endl;
-    return aux;
+
+    cout << "Nomes validados com sucesso!" << endl;
+    return head;
 }
 
 void showValues(list called) {
@@ -33,7 +35,7 @@ void showValues(list called) {
     int I = 1;
 
     while (aux != null) {
-        if (aux->next == null) /* Condiciona o valor "Fim da lista de nomes!" */
+        if (aux->next == null) 
             cout << aux->value << endl;
         else 
             cout << I << "o nome: " << aux->value << ";" << endl;
@@ -44,32 +46,44 @@ void showValues(list called) {
 
 list checkPresence(list called) {
     list aux = called;
-    list presence;
-    presence = new node;
+    list head = new node;
+    list paux = head;
 
-    while (aux != null) {
-        cout << aux->value << " esta presente? " << endl;
-        cin >> presence->value;
-        if (presence->value == "Sim" || presence->value == "sim")
-            cout << "Presenca confirmada!" << endl << endl;
-        else
-            cout << "Ausencia registrada!" << endl << endl;
-        aux = aux->next;
+    while (aux != NULL) {
         if (aux->value == "Fim da lista de nomes!\0") 
             break;
+        else {
+            cout << aux->value << " esta presente? (Sim/Nao): ";
+            cin >> paux->value;
+        }
+
+        if (aux->next == NULL) {
+            paux->next = NULL;
+            break;
+        } else {
+            paux->next = new node;
+            paux = paux->next;
+        }
+
+        aux = aux->next;
     }
-    cout << "Chamada realizada com sucesso! Verifique as presencas/ausencias no menu de opcoes." << endl;
-    return presence;
+
+    cout << "Chamada realizada com sucesso!" << endl;
+    return head;
 }
 
 void showPresence(list called, list name, list presence) {
-    list aux = called;
+    list n = name;
+    list p = presence;
 
-    while (aux != null) {
-        cout << name->value << "está" << presence->value << endl;
+    cout << endl << "=== Presencas ===" << endl;
 
-        name = name->next;
-        presence = presence->next;
+    while (n != NULL && p != NULL) {
+        if (n->value == "Fim da lista de nomes!\0") 
+            break;
+        cout << n->value << " esta presente? " << p->value << endl;
+        n = n->next;
+        p = p->next;
     }
 }
 
