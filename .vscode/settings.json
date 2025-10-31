@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.dbclient-js": "javascript",
+        "*.embeddedhtml": "html",
+        "*.cssc": "csscript",
+        "iostream": "cpp",
+        "ostream": "cpp"
+    },
+    "files.encoding": "utf8",
+    "files.autoGuessEncoding": true
+}
