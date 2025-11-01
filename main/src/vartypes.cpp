@@ -1,4 +1,5 @@
 #include "hexa.hpp"
+#include "nat.hpp"
 using namespace std;
 
 // Construtor

@@ -104,7 +104,7 @@ int main() {
         cout << "= 2. Mostrar nomes   =" << endl;
         cout << "= 3. Fazer chamada   =" << endl;
         cout << "= 4. Mostrar chamada =" << endl;
-        cout << "= 5.                 =" << endl;
+        cout << "= 5. Lançar notas    =" << endl;
         cout << "= 6.                 =" << endl;
         cout << "======================" << endl;
         cout << "Digite uma opcao: "; 
@@ -126,6 +126,9 @@ int main() {
             case 4: 
                 showPresence(call, names, classPresence);
                 break;
+            case 5: 
+                
+                break;
             default:
                 cout << "Digite um valor valido!" << endl;
                 break;
@@ -133,5 +136,5 @@ int main() {
     } while (OP!=0);
     
     
-
+    return 0; 
 }
